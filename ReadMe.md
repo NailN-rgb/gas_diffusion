@@ -5,5 +5,6 @@ equation  - return disctritized parts of parabolic equation
 assembler - get local matrix + rhs for element type discretized by FVM 
 
 solver    - solve global matrix + rhs with different methods
+precond   - preconditioners for solving procedures
 timeInt   - integrate by time steps using different schemes
 postproc  - solution postprocess (get PVF)
