@@ -1,14 +1,15 @@
 from typing import List, Tuple
 
 from base_assembler import BaseAssembler
+from mesh1D.mesh1D import Mesh1D
 from ..fe1D.base_element import Base_element
 from ..equation.base_equation import Equation
 
 class Assembler1D(BaseAssembler):
-    def __init__(self, element: Base_element):
-        self.element = element
+    def __init__(self, mesh: Mesh1D, equation: Equation, element: Base_element) -> None:
+        super().__init__(mesh, equation, element)
         
-    def assemble_element(self, elem_nodes: List[float], equation: Equation) -> Tuple[List[List[float]], List[List[float]], List[float]]:
+    def assemble_element(self, elem_nodes: List[float]) -> Tuple[List[List[float]], List[List[float]], List[float]]:
         n = self.element.num_nodes()
         
         # Init local matrixes with zero matrix
@@ -23,9 +24,9 @@ class Assembler1D(BaseAssembler):
             
             jacobian = abs(dx)
             
-            acc = equation.accumulative_term(x)
-            D   = equation.flow_term(x)
-            f   = equation.source_term(x)
+            acc = self.equation.accumulative_term(x)
+            D   = self.equation.flow_term(x)
+            f   = self.equation.source_term(x)
             
             for i in range(n):
                 # get i-shape functions

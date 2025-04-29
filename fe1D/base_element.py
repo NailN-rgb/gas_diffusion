@@ -1,4 +1,4 @@
-from ABC import ABC, abstractmethod
+from abc import ABC, abstractmethod
 from typing import List, Tuple
 
 class Base_element(ABC):
