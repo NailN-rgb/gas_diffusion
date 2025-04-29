@@ -19,4 +19,4 @@ class Equation(ABC):
     
     @abstractmethod
     def is_linear(self):
-        return True
+        pass
