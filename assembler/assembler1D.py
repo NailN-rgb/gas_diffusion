@@ -40,6 +40,6 @@ class Assembler1D(BaseAssembler):
                     dNj = self.element.shape_function_der(j, xi) / dx
                     
                     M[i][j] += acc * Ni * Nj * w * jacobian
-                    K[i][j] +=   D * Ni * Nj * w * jacobian
+                    K[i][j] += D * dNi * dNj * w * jacobian
                     
         return M, K, F
