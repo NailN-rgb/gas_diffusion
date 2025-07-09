@@ -3,7 +3,7 @@ from scipy.sparse.linalg import spilu
 from scipy.sparse import csc_matrix
 import numpy as np
 
-from base_precond import BasePrecondtioner
+from solver.precond.base_precond import BasePrecondtioner
 
 class IdentityPreconditioner(BasePrecondtioner):
     def build(self, A: np.ndarray) -> None:

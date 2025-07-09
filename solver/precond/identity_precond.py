@@ -2,7 +2,7 @@ from scipy.sparse.linalg import LinearOperator
 import numpy as np
 from scipy.sparse import csc_matrix
 
-from base_precond import BasePrecondtioner
+from solver.precond.base_precond import BasePrecondtioner
 
 class IdentityPreconditioner(BasePrecondtioner):
     def build(self, A: np.ndarray) -> None:

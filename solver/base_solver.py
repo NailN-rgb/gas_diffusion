@@ -1,8 +1,8 @@
 import numpy as np
 from abc import ABC, abstractmethod
 
-from precond.base_precond import BasePrecondtioner
-from precond.identity_precond import IdentityPreconditioner
+from solver.precond.base_precond import BasePrecondtioner
+from solver.precond.identity_precond import IdentityPreconditioner
 
 
 class BaseSolver(ABC):

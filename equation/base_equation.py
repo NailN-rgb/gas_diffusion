@@ -1,16 +1,16 @@
-from abc import ABS, abstractmethod
+from abc import ABC, abstractmethod
 
 class Equation(ABC):
     @abstractmethod
-    def flow_term(self, x: float, y: float) -> float:
+    def flow_term(self, x: float = 0.0, y: float = 0.0) -> float:
         pass
     
     @abstractmethod
-    def accumulative_term(self, x: float, y: float) -> float:
+    def accumulative_term(self, x: float = 0.0, y: float = 0.0) -> float:
         pass
     
     @abstractmethod
-    def source_term(self, x: float, y: float) ->float:
+    def source_term(self, x: float = 0.0, y: float = 0.0) ->float:
         pass
     
     @abstractmethod

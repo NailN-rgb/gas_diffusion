@@ -1,8 +1,11 @@
-from base_element import Base_element
+from fe1D.base_element import Base_element
 from typing import List, Tuple
 
 
 class LinearElement(Base_element):
+    def __init__(self):
+        super().__init__()
+    
     def num_nodes(self) -> int:
         return 2
     
