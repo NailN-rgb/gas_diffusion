@@ -6,6 +6,7 @@ from pvts.LinearPVT import LinearPVT
 from equation.linear_equation1D import LinearEquation1D
 from CVFEAssembler.cvfe_assembler import assemble_system
 from solver.bcgstab_solver import BCGStabSolver
+from visualization.visualizators import print_solution
 
 
 def LinearSolver():
@@ -13,11 +14,14 @@ def LinearSolver():
     
     # Initialize mesh object
     OneDimMesh = Mesh1D(
-        0.0,
-        1.0,
-        100,
-        0.5,
-        linear_element
+        x_start=0.0,
+        x_end=1.0,
+        min_h=0.05,
+        max_h=0.5,
+        well_x=0.5,
+        element_type=linear_element,
+        N=100,
+        mesh_type="geometric"
     )
     
     # Initialize PVT object
@@ -26,7 +30,7 @@ def LinearSolver():
     Equation_Data = LinearEquation1D(PVT_Model)
     
     # Initial pressure at nodes
-    Initial_Pressure = Equation_Data.initial_condition(OneDimMesh.get_nodes_count, 340.23)
+    Initial_Pressure = Equation_Data.initial_condition(OneDimMesh.get_nodes_count, 340.)
     
     p_old = Initial_Pressure
     
@@ -48,6 +52,8 @@ def LinearSolver():
         print("Solved for " + str(i) + " time layer")
         
     print(p_old[-1])
+    
+    print_solution(OneDimMesh, p_old)
         
         
     

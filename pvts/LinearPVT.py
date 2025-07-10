@@ -1,11 +1,12 @@
 
 class LinearPVT:
-    k   = 33.33
+    # FIXME: mD to m^2
+    k   = 33.33 * 9.8692326671601e-16
     B   = 1
-    ct  = 6e-6
-    rho = 1000
-    phi = 0.1
-    mu = 0.001
+    ct  = 6e-6 # FIXME: Pa
+    rho = 1000 
+    phi = 0.1 
+    mu = 0.001 
     
     def __init__(self) -> None:
         pass

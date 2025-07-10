@@ -29,7 +29,7 @@ def assemble_system(
     for i in range(1, N - 1):
         a[i]   = lam / (mesh_nodes[i] - mesh_nodes[i - 1])
         c[i]   = lam / (mesh_nodes[i + 1] - mesh_nodes[i])
-        b[i]   = - acc / dt * (mesh_nodes[i + 1] - mesh_nodes[i-1]) / 2 - a[i] - c[i]
+        b[i]   = - acc / dt * (mesh_nodes[i + 1] - mesh_nodes[i - 1]) / 2 - a[i] - c[i]
         rhs[i] = - acc / dt * (mesh_nodes[i + 1] - mesh_nodes[i - 1]) / 2 * pold[i]
     
     # Left boundary
