@@ -32,6 +32,9 @@ class Mesh1D:
         # generate ordinary mesh
         self.generate_mesh()
         
+        # find well node
+        self.well_nId = self.find_well_node_id() 
+        
     def generate_mesh(self):
         if(self.mesh_type == "ordinary"):
             self.generate_ordinary_nodes()
@@ -52,7 +55,7 @@ class Mesh1D:
     def generate_ordinary_elements(self) -> None:
         self.elements = [[i, i + 1] for i in range(self.N)]
         
-    # Exponential mesh
+    # FIXME: Exponential mesh 
     def generate_exponential_nodes(self) -> None:
         xi = np.linspace(0, 1, self.N)
     
@@ -83,11 +86,20 @@ class Mesh1D:
         left_nodes  = [self.well_x - self.min_h * np.power(alpha_left,  i) for i in range(0, int(self.N / 2))]
         right_nodes = [self.well_x + self.min_h * np.power(alpha_right, i) for i in range(0, int(self.N / 2))]
         
+        left_nodes = left_nodes[::-1]
+        left_nodes.append(self.well_x)
+        self.N += 1
+        
         self.nodes = np.concatenate((left_nodes, right_nodes))
+    
         
     
     def generate_geometric_elements(self) -> None:
         pass
+    
+    def find_well_node_id(self) -> int:
+        return np.where(self.nodes == self.well_x)[0]
+    
     @property
     def get_nodes_count(self):
         return self.N

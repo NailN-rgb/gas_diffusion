@@ -9,12 +9,12 @@ def print_solution(
     last_solution: np.ndarray
 ):
     plt.figure("Solution at last time layer")
-    plt.plot(mesh_data.nodes, last_solution, "ro")
+    plt.plot(mesh_data.nodes, last_solution[0:-1], "ro")
     
     plt.xlabel("x")
     plt.ylabel("p")
     
-    plt.axis((mesh_data.x_start, mesh_data.x_end, 200, 400))
+    plt.axis((mesh_data.x_start, mesh_data.x_end, -100, 400))
     
     plt.savefig("visualization/last_sol.png")
     
