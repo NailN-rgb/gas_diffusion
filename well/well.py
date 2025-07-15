@@ -15,7 +15,7 @@ class Well:
         self.q_rate = q_rate * 1.157 * 10e-5
         self.well_h = well_h
         
-        self.pwf = np.zeros(0)
+        self.pwf = []
         
     
     def get_well_index(
@@ -31,7 +31,7 @@ class Well:
     
     
     def write_pwf(self, pwf: float):
-        np.append(self.pwf, pwf)
+        self.pwf.append(pwf)
     
     @property
     def get_rw(self):
